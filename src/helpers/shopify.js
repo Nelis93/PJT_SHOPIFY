@@ -49,7 +49,7 @@ export async function getAllProducts() {
                       }
                       title
                       description
-                      featuredImage(first: 5) {
+                      featuredImage {
                         url                                             
                       }
                     }

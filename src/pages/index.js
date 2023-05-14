@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { getAllProducts } from "@/helpers/shopify";
+import Link from "next/link";
 import Products from "@/components/Products";
 
 export default function Home({ products }) {
@@ -13,14 +14,19 @@ export default function Home({ products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Products products={products.edges} />
+        <Link href="/allProducts">Go to products</Link>
+        <div className="popProds">display most popular products</div>
       </main>
     </>
   );
 }
 export async function getStaticProps(context) {
   return getAllProducts()
-    .then((response) => response.body.data.products)
-    .then((products) => ({ props: { products } }))
+    .then((response) => {
+      return response.body.data?.products;
+    })
+    .then((products) => {
+      return { props: { products } };
+    })
     .catch((err) => console.log("not working", err));
 }
