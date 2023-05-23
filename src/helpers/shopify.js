@@ -52,6 +52,18 @@ export async function getAllProducts() {
                       featuredImage {
                         url                                             
                       }
+                      variants(first: 5) {
+                        edges {
+                          node{
+                            id
+                            price {
+                              amount
+                            }
+                            quantityAvailable
+                            title
+                          }
+                        }
+                      }
                     }
                   }
                 }

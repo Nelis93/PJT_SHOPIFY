@@ -1,11 +1,12 @@
 import React from "react";
 
-export default function ProductCard({ product }) {
-  console.log(product);
+export default function ProductCard({ product, handleAddToCart }) {
+  // console.log(product);
   return (
     <>
-      <div>{product.title}</div>
+      <h1>{product.title}</h1>
       <img src={product.featuredImage.url} />
+      <button onClick={handleAddToCart}>Add to card</button>
     </>
   );
 }
